@@ -1,0 +1,122 @@
+﻿@model IEnumerable<PetMeGenNHibernate.EN.PetMe.AnuncioEN>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ultimos anuncios</h2>
+
+<p>
+    @Html.ActionLink("Publicar Anuncio", "Create")
+</p>
+@foreach (var item in Model)
+{
+    if (item.AnimalContratado == 0)
+    {
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-4 text-left"><b>Desde: </b> @Html.DisplayFor(model => item.FechaIni)</div>
+                    <div class="col-md-4 text-center"><b>Direccion: </b> @Html.DisplayFor(model => item.Direccion)</div>
+                    <div class="col-md-4 text-right"><b>Detalle: </b> @Html.DisplayFor(model => item.Detalle)</div>
+
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4 text-left"><b>Hasta: </b> @Html.DisplayFor(model => item.FechaFin)</div>
+                    <div class="col-md-4 text-center"><b>@Html.DisplayFor(model => item.Provincia), @Html.DisplayFor(model => item.Localidad) </b> </div>
+
+
+                </div>
+                <!--<div class="row">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <table class="table">
+                                <tr>
+                                    <th>Animal</th>
+                                    <th>Precio</th>
+
+                                </tr>
+
+                                foreach (var fila in item.Tipos_Animales)
+                                {
+                                    <tr>
+                                        <td>Html.DisplayFor(model => fila.Tipo)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Html.DisplayFor(model => fila.Tarifa)</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+
+                    </div>-->
+
+
+
+            </div>
+        </div>
+    }
+
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaIni)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Provincia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Localidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnimalContratado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detalle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Provincia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AnimalContratado)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

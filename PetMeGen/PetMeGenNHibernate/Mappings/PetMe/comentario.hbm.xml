@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PetMeGenNHibernate"
+		                   namespace="PetMeGenNHibernate.EN.PetMe">
+		    
+		    
+			
+				<class name="ComentarioEN" table="Comentario"> 
+				  	
+						<id name="Id" column="idComentario" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Comentario" type="string"> 
+						<column name="comentario"  not-null="true"/>
+					</property>
+					<property name="Valoracion" > 
+						<column name="valoracion"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+		  			
+						<many-to-one name="Anuncio" class="PetMeGenNHibernate.EN.PetMe.AnuncioEN" >	
+								<column name="FK_idAnuncio_idAnuncio"/> 
+						</many-to-one>
+											 					
+			
+		  			
+						<many-to-one name="Usuario_comen" class="PetMeGenNHibernate.EN.PetMe.UsuarioEN" >	
+								<column name="FK_email_idUsuario_0"/> 
+						</many-to-one>
+											 					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="ComentarioENReadAllHQL">from ComentarioEN</query>
+		  <query name="ComentarioENbuscarPorValoracionHQL"><![CDATA[FROM ComentarioEN com WHERE com.Valoracion = :p_valoracion]]></query>
+		</hibernate-mapping>
+	

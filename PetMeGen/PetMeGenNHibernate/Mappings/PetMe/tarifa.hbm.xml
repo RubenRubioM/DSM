@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PetMeGenNHibernate"
+		                   namespace="PetMeGenNHibernate.EN.PetMe">
+		    
+		    
+			
+				<class name="TarifaEN" table="Tarifa"> 
+				  	
+						<id name="Id" column="idTarifa" type="integer"> 
+							<generator class="hilo"/>
+						</id>
+			
+					
+					<property name="Precio" type="double"> 
+						<column name="precio"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+		  			
+					
+							   <one-to-one name="Tipos_Animales" class="PetMeGenNHibernate.EN.PetMe.Tipo_AnimalEN" property-ref="Tarifa" />							
+					 
+						
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="TarifaENReadAllHQL">from TarifaEN</query>
+		</hibernate-mapping>
+	

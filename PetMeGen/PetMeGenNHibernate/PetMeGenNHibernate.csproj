@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+		<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		  <PropertyGroup>
+		    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+		    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+		    <ProductVersion>8.0.30703</ProductVersion>
+		    <SchemaVersion>2.0</SchemaVersion>
+		    <ProjectGuid>{66C66636-FD6A-4A3F-A7C5-FE88BBA117AF}</ProjectGuid>
+		    <OutputType>Library</OutputType>
+		    <AppDesignerFolder>Properties</AppDesignerFolder>
+		    <RootNamespace>PetMeGenNHibernate</RootNamespace>
+		    <AssemblyName>PetMeGenNHibernate</AssemblyName>
+		    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+		    <FileAlignment>512</FileAlignment>
+		    <PublishUrl>publish\</PublishUrl>
+		    <Install>true</Install>
+		    <InstallFrom>Disk</InstallFrom>
+		    <UpdateEnabled>false</UpdateEnabled>
+		    <UpdateMode>Foreground</UpdateMode>
+		    <UpdateInterval>7</UpdateInterval>
+		    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+		    <UpdatePeriodically>false</UpdatePeriodically>
+		    <UpdateRequired>false</UpdateRequired>
+		    <MapFileExtensions>true</MapFileExtensions>
+		    <ApplicationRevision>0</ApplicationRevision>
+		    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+		    <IsWebBootstrapper>false</IsWebBootstrapper>
+		    <UseApplicationTrust>false</UseApplicationTrust>
+		    <BootstrapperEnabled>true</BootstrapperEnabled>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		    <DebugSymbols>true</DebugSymbols>
+		    <DebugType>full</DebugType>
+		    <Optimize>false</Optimize>
+		    <OutputPath>bin\Debug\</OutputPath>
+		    <DefineConstants>DEBUG;TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		    <DebugType>pdbonly</DebugType>
+		    <Optimize>true</Optimize>
+		    <OutputPath>bin\Release\</OutputPath>
+		    <DefineConstants>TRACE</DefineConstants>
+		    <ErrorReport>prompt</ErrorReport>
+		    <WarningLevel>4</WarningLevel>
+		  </PropertyGroup>
+		<ItemGroup>
+		    <Reference Include="Castle.DynamicProxy2, Version=2.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PetMeGenNHibernate\AppLib\Castle.DynamicProxy2.dll</HintPath>
+		    </Reference>
+		    <Reference Include="LinFu.DynamicProxy, Version=1.0.3.14911, Culture=neutral, PublicKeyToken=62a6874124340d6e, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PetMeGenNHibernate\AppLib\LinFu.DynamicProxy.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PetMeGenNHibernate\AppLib\NHibernate.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.Castle, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PetMeGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll</HintPath>
+		    </Reference>
+		    <Reference Include="NHibernate.ByteCode.LinFu, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PetMeGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll</HintPath>
+		    </Reference>
+		    <Reference Include="Newtonsoft.Json, Version=4.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PetMeGenNHibernate\AppLib\Newtonsoft.Json.dll</HintPath>
+		    </Reference>
+		     <Reference Include="jose-jwt, Version=4.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+		      <SpecificVersion>False</SpecificVersion>
+		      <HintPath>..\PetMeGenNHibernate\AppLib\jose-jwt.dll</HintPath>
+		    </Reference>
+		    <Reference Include="System" />
+		    <Reference Include="System.Core">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    
+		    <Reference Include="System.Transactions" />
+		    <Reference Include="System.Xml.Linq">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data.DataSetExtensions">
+		      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+		    </Reference>
+		    <Reference Include="System.Data" />
+		    <Reference Include="System.Xml" />
+		</ItemGroup>
+		
+		<ItemGroup>
+		    <Content Include="..\PetMeGenNHibernate\AppLib\Antlr3.Runtime.dll" />
+		    <Content Include="..\PetMeGenNHibernate\AppLib\Castle.DynamicProxy2.dll" />
+		    <Content Include="..\PetMeGenNHibernate\AppLib\Iesi.Collections.dll" />
+		    <Content Include="..\PetMeGenNHibernate\AppLib\LinFu.DynamicProxy.dll" />
+		    <Content Include="..\PetMeGenNHibernate\AppLib\log4net.dll" />
+		    <Content Include="..\PetMeGenNHibernate\AppLib\NHibernate.ByteCode.Castle.dll" />
+		    <Content Include="..\PetMeGenNHibernate\AppLib\NHibernate.ByteCode.LinFu.dll" />
+		    <Content Include="..\PetMeGenNHibernate\AppLib\NHibernate.dll" />
+		    <Content Include="..\PetMeGenNHibernate\AppLib\nunit.core.dll" />
+		    <Content Include="..\PetMeGenNHibernate\AppLib\nunit.framework.dll" />
+  		    <Content Include="..\PetMeGenNHibernate\AppLib\jose-jwt.dll" />
+  		</ItemGroup>
+  		
+		<ItemGroup>
+			<Compile Include="NHibernateHelper.cs" />
+		    <Compile Include="Utils\Util.cs" />
+		    <Compile Include="Exceptions\ModelException.cs"/>
+		    <Compile Include="Exceptions\DataLayerException.cs"/>
+		    
+	<Compile Include="CAD\BasicCAD.cs"/>
+	<Compile Include="CP\BasicCP.cs"/>
+	<Compile Include="EN\PetMe\UsuarioEN.cs" />
+	<Compile Include="CEN\PetMe\UsuarioCEN.cs" />
+	<Compile Include="CAD\PetMe\IUsuarioCAD.cs" />
+	<Compile Include="CAD\PetMe\UsuarioCAD.cs" />
+	<Compile Include="CP\PetMe\UsuarioCP.cs" />
+			
+			
+			
+			
+			<Compile Include="CP\PetMe\UsuarioCP_ReservarAnuncio.cs" />
+			
+			<Compile Include="CP\PetMe\UsuarioCP_HacerComentario.cs" />
+			
+			
+			
+			
+			
+			
+			<Compile Include="CP\PetMe\UsuarioCP_CancelarReserva.cs" />
+			
+			<Compile Include="CP\PetMe\UsuarioCP_EliminarComentario.cs" />
+			
+			
+			<Compile Include="CEN\PetMe\UsuarioCEN_IncrementarCartera.cs" />
+			
+			<Compile Include="CEN\PetMe\UsuarioCEN_ModificarEstado.cs" />
+			
+			<Compile Include="CP\PetMe\UsuarioCP_CrearAnuncio.cs" />
+			
+			
+			
+			<Compile Include="CP\PetMe\UsuarioCP_EliminarAnuncio.cs" />
+			
+			
+			
+			
+	<Compile Include="EN\PetMe\AnuncioEN.cs" />
+	<Compile Include="CEN\PetMe\AnuncioCEN.cs" />
+	<Compile Include="CAD\PetMe\IAnuncioCAD.cs" />
+	<Compile Include="CAD\PetMe\AnuncioCAD.cs" />
+	<Compile Include="CP\PetMe\AnuncioCP.cs" />
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<Compile Include="CP\PetMe\AnuncioCP_CrearTablaAnimales.cs" />
+			
+			<Compile Include="CP\PetMe\AnuncioCP_BorrarTablaAnimales.cs" />
+			
+			<Compile Include="CEN\PetMe\AnuncioCEN_ContratarAnimal.cs" />
+			
+			
+			
+			
+			<Compile Include="CEN\PetMe\AnuncioCEN_CancelarContrato.cs" />
+			
+	<Compile Include="EN\PetMe\Tipo_AnimalEN.cs" />
+	<Compile Include="CEN\PetMe\Tipo_AnimalCEN.cs" />
+	<Compile Include="CAD\PetMe\ITipo_AnimalCAD.cs" />
+	<Compile Include="CAD\PetMe\Tipo_AnimalCAD.cs" />
+	<Compile Include="CP\PetMe\Tipo_AnimalCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="EN\PetMe\ComentarioEN.cs" />
+	<Compile Include="CEN\PetMe\ComentarioCEN.cs" />
+	<Compile Include="CAD\PetMe\IComentarioCAD.cs" />
+	<Compile Include="CAD\PetMe\ComentarioCAD.cs" />
+	<Compile Include="CP\PetMe\ComentarioCP.cs" />
+			
+			
+			
+			
+			
+			
+	<Compile Include="EN\PetMe\AdministradorEN.cs" />
+	<Compile Include="CEN\PetMe\AdministradorCEN.cs" />
+	<Compile Include="CAD\PetMe\IAdministradorCAD.cs" />
+	<Compile Include="CAD\PetMe\AdministradorCAD.cs" />
+	<Compile Include="CP\PetMe\AdministradorCP.cs" />
+			
+			
+			
+			
+			
+	<Compile Include="Enumerated\PetMe\ValoracionEnum.cs" />
+	<Compile Include="Enumerated\PetMe\EstadosEnum.cs" />
+	<Compile Include="Enumerated\PetMe\EstadoUsuarioEnum.cs" />
+	
+	
+
+		    
+	
+
+		    <Compile Include="Properties\AssemblyInfo.cs" />
+		    <Compile Include="Properties\Settings.Designer.cs">
+		      <AutoGen>True</AutoGen>
+		      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		      <DependentUpon>Settings.settings</DependentUpon>
+		    </Compile>
+		  </ItemGroup>
+		  <ItemGroup>
+		  
+	<EmbeddedResource Include="Mappings\PetMe\usuario.hbm.xml" />
+	<EmbeddedResource Include="Mappings\PetMe\anuncio.hbm.xml" />
+	<EmbeddedResource Include="Mappings\PetMe\tipo_animal.hbm.xml" />
+	<EmbeddedResource Include="Mappings\PetMe\comentario.hbm.xml" />
+	<EmbeddedResource Include="Mappings\PetMe\administrador.hbm.xml" />
+	
+	
+
+		  </ItemGroup>
+		  <ItemGroup>
+		    <Content Include="hibernate.cfg.xml">
+		      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		    </Content>
+		  </ItemGroup>
+		  <ItemGroup>
+		    <None Include="app.config" />
+		    <None Include="Properties\Settings.settings">
+		      <Generator>SettingsSingleFileGenerator</Generator>
+		      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+		    </None>
+		        <None Include="Resources\xsd\nhibernate-configuration.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\xsd\nhibernate-mapping.xsd">
+      <SubType>Designer</SubType>
+    </None>
+		  </ItemGroup>
+	 	
+		
+	
+		<ItemGroup>
+		    <ProjectReference Include="..\APIExterna\APIExterna.csproj">
+		      <Project>{4ade35c8-a0c3-49da-9e1a-11a53ca19214}</Project>
+		      <Name>APIExterna</Name>
+		    </ProjectReference>
+	    </ItemGroup>
+	    
+		  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+		  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+		       Other similar extension points exist, see Microsoft.Common.targets.
+		  <Target Name="BeforeBuild">
+		  </Target>
+		  <Target Name="AfterBuild">
+		  </Target>
+		  -->
+		</Project>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+		<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+		                   assembly="PetMeGenNHibernate"
+		                   namespace="PetMeGenNHibernate.EN.PetMe">
+		    
+		    
+			
+				<class name="UsuarioEN" table="Usuario"> 
+						<id name="Email" column="email"/> 
+			
+					
+					<property name="Nombre" type="string"> 
+						<column name="nombre"  not-null="true"/>
+					</property>
+					<property name="Apellidos" type="string"> 
+						<column name="apellidos"  not-null="true"/>
+					</property>
+					<property name="Nick" type="string"> 
+						<column name="nick"  unique="true" not-null="true"/>
+					</property>
+					<property name="Nacimiento" type="date"> 
+						<column name="nacimiento"  not-null="true"/>
+					</property>
+					<property name="Provincia" type="string"> 
+						<column name="provincia"  not-null="true"/>
+					</property>
+					<property name="Localidad" type="string"> 
+						<column name="localidad"  not-null="true"/>
+					</property>
+					<property name="Foto" type="string"> 
+						<column name="foto" />
+					</property>
+					<property name="Descripcion" type="string"> 
+						<column name="descripcion" />
+					</property>
+					<property name="Cartera" type="float"> 
+						<column name="cartera"  not-null="true"/>
+					</property>
+					<property name="Telefono" type="string"> 
+						<column name="telefono" />
+					</property>
+					<property name="Estado" > 
+						<column name="estado"  not-null="true"/>
+					</property>
+					<property name="Pass" type="string"> 
+						<column name="pass"  not-null="true"/>
+					</property>
+					<property name="MotivoEstado" type="string"> 
+						<column name="motivoEstado"  not-null="true"/>
+					</property>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		  			
+						<bag name="Anuncios" >
+							<key>
+							
+								
+								<column name="FK_email_idUsuario"/>
+					      	</key>
+							<one-to-many class="PetMeGenNHibernate.EN.PetMe.AnuncioEN"/>
+					    </bag>
+					
+			
+		  			
+						<bag name="Anuncios_contratados" >
+							<key>
+							
+								
+								<column name="FK_email_idUsuario_0"/>
+					      	</key>
+							<one-to-many class="PetMeGenNHibernate.EN.PetMe.AnuncioEN"/>
+					    </bag>
+					
+			
+			
+		  			
+						<bag name="Comentarios_usuario" >
+							<key>
+							
+								
+								<column name="FK_email_idUsuario_0"/>
+					      	</key>
+							<one-to-many class="PetMeGenNHibernate.EN.PetMe.ComentarioEN"/>
+					    </bag>
+					
+			
+			
+			
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+		
+		 </class>	
+		  
+		  <query name="UsuarioENReadAllHQL">from UsuarioEN</query>
+		  <query name="UsuarioENbuscarPorNombreHQL"><![CDATA[FROM UsuarioEN usu WHERE usu.Nombre = :p_nombre]]></query>
+		  <query name="UsuarioENbuscarPorProvinciaHQL"><![CDATA[FROM UsuarioEN usu WHERE usu.Provincia = :p_provincia]]></query>
+		  <query name="UsuarioENbuscarPorLocalidadHQL"><![CDATA[FROM UsuarioEN usu WHERE usu.Localidad = :p_localidad]]></query>
+		</hibernate-mapping>
+	
