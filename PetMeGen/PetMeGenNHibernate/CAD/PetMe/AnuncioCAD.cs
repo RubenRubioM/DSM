@@ -515,43 +515,13 @@ public void QuitarAnimales (int p_Anuncio_OID, System.Collections.Generic.IList<
                 SessionClose ();
         }
 }
-public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorFechaIni (Nullable<DateTime> p_fechaIni)
-{
-        System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> result;
-        try
-        {
-                SessionInitializeTransaction ();
-                //String sql = @"FROM AnuncioEN self where FROM AnuncioEN anu WHERE anu.FechaIni = :p_fechaIni";
-                //IQuery query = session.CreateQuery(sql);
-                IQuery query = (IQuery)session.GetNamedQuery ("AnuncioENbuscarPorFechaIniHQL");
-                query.SetParameter ("p_fechaIni", p_fechaIni);
-
-                result = query.List<PetMeGenNHibernate.EN.PetMe.AnuncioEN>();
-                SessionCommit ();
-        }
-
-        catch (Exception ex) {
-                SessionRollBack ();
-                if (ex is PetMeGenNHibernate.Exceptions.ModelException)
-                        throw ex;
-                throw new PetMeGenNHibernate.Exceptions.DataLayerException ("Error in AnuncioCAD.", ex);
-        }
-
-
-        finally
-        {
-                SessionClose ();
-        }
-
-        return result;
-}
 public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorFechaFin (Nullable<DateTime> p_fechaFin)
 {
         System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> result;
         try
         {
                 SessionInitializeTransaction ();
-                //String sql = @"FROM AnuncioEN self where FROM AnuncioEN anu WHERE anu.FechaFin = :p_fechaFin";
+                //String sql = @"FROM AnuncioEN self where FROM AnuncioEN anu WHERE anu.FechaFin <= :p_fechaFin";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AnuncioENbuscarPorFechaFinHQL");
                 query.SetParameter ("p_fechaFin", p_fechaFin);
@@ -585,6 +555,155 @@ public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> B
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("AnuncioENbuscarPorEstadoHQL");
                 query.SetParameter ("p_estado", p_estado);
+
+                result = query.List<PetMeGenNHibernate.EN.PetMe.AnuncioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PetMeGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PetMeGenNHibernate.Exceptions.DataLayerException ("Error in AnuncioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorNoContratado ()
+{
+        System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnuncioEN self where FROM AnuncioEN anu WHERE anu.AnimalContratado=0";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnuncioENbuscarPorNoContratadoHQL");
+
+                result = query.List<PetMeGenNHibernate.EN.PetMe.AnuncioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PetMeGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PetMeGenNHibernate.Exceptions.DataLayerException ("Error in AnuncioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorProvincia (string p_provincia)
+{
+        System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnuncioEN self where FROM AnuncioEN anu WHERE anu.Provincia = :p_provincia";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnuncioENbuscarPorProvinciaHQL");
+                query.SetParameter ("p_provincia", p_provincia);
+
+                result = query.List<PetMeGenNHibernate.EN.PetMe.AnuncioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PetMeGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PetMeGenNHibernate.Exceptions.DataLayerException ("Error in AnuncioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorLocalidad (string p_localidad)
+{
+        System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnuncioEN self where FROM AnuncioEN anu WHERE anu.Localidad = :p_localidad";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnuncioENbuscarPorLocalidadHQL");
+                query.SetParameter ("p_localidad", p_localidad);
+
+                result = query.List<PetMeGenNHibernate.EN.PetMe.AnuncioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PetMeGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PetMeGenNHibernate.Exceptions.DataLayerException ("Error in AnuncioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorDireccion (string p_direccion)
+{
+        System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnuncioEN self where FROM AnuncioEN anu WHERE anu.Direccion = :p_direccion";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnuncioENbuscarPorDireccionHQL");
+                query.SetParameter ("p_direccion", p_direccion);
+
+                result = query.List<PetMeGenNHibernate.EN.PetMe.AnuncioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PetMeGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PetMeGenNHibernate.Exceptions.DataLayerException ("Error in AnuncioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorFechaIni (Nullable<DateTime> p_fechaIni)
+{
+        System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM AnuncioEN self where FROM AnuncioEN anu WHERE anu.FechaIni > :p_fechaIni";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("AnuncioENbuscarPorFechaIniHQL");
+                query.SetParameter ("p_fechaIni", p_fechaIni);
 
                 result = query.List<PetMeGenNHibernate.EN.PetMe.AnuncioEN>();
                 SessionCommit ();

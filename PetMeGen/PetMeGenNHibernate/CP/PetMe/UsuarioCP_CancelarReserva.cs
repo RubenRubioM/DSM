@@ -46,7 +46,7 @@ public void CancelarReserva (string p_oid, int p_anuncio)
                 // setteamos su estado a disponible nuevamente, y el id del animalContratado a 0
                 AnuncioEN anuncio = anuncioCAD.ReadOIDDefault (p_anuncio);
                 anuncioCEN.Modify (p_anuncio, anuncio.FechaIni, anuncio.FechaFin, anuncio.Direccion, anuncio.Detalle, EstadosEnum.publicado, anuncio.Provincia, anuncio.Localidad);
-                anuncioCEN.CancelarContrato(p_anuncio);
+                anuncioCEN.CancelarContrato (p_anuncio);
 
                 SessionCommit ();
         }

@@ -37,7 +37,7 @@
 						<column name="cartera"  not-null="true"/>
 					</property>
 					<property name="Telefono" type="string"> 
-						<column name="telefono" />
+						<column name="telefono"  not-null="true"/>
 					</property>
 					<property name="Estado" > 
 						<column name="estado"  not-null="true"/>
@@ -120,5 +120,6 @@
 		  <query name="UsuarioENbuscarPorNombreHQL"><![CDATA[FROM UsuarioEN usu WHERE usu.Nombre = :p_nombre]]></query>
 		  <query name="UsuarioENbuscarPorProvinciaHQL"><![CDATA[FROM UsuarioEN usu WHERE usu.Provincia = :p_provincia]]></query>
 		  <query name="UsuarioENbuscarPorLocalidadHQL"><![CDATA[FROM UsuarioEN usu WHERE usu.Localidad = :p_localidad]]></query>
+		  <query name="UsuarioENbuscarPorNickHQL"><![CDATA[FROM UsuarioEN usu WHERE usu.Nick = :p_nick]]></query>
 		</hibernate-mapping>
 	

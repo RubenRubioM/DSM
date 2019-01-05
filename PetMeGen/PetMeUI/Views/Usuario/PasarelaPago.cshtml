@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "PasarelaPago";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PasarelaPago</h2>
+<div style="background-color:aliceblue;">
+    @using (Html.BeginForm("IncrementarCartera", "Usuario", FormMethod.Post))
+    {
+        @*<img src="~/Imagenes/visa.png" height="100" width="100" />*@
+
+        <div class="col-auto pt-3">
+            <label class="sr-only" for="tarjeta">Numero de la tarjeta: </label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-credit-card-alt"></i></div>
+                </div>
+                <input required type="text" class="form-control" id="tarjeta" placeholder="1234-4321-2411-5214" name="tarjeta">
+            </div>
+        </div>
+
+        <div class="col-auto pt-3">
+            <label class="sr-only" for="caducidad">Caducidad: </label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-calendar-times-o"></i></div>
+                </div>
+                <input required type="date" class="form-control" id="caducidad" name="caducidad">
+            </div>
+        </div>
+
+        <div class="col-auto pt-3">
+            <label class="sr-only" for="codigo">CV: </label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text"><i class="fa fa-key"></i></div>
+                </div>
+                <input required type="number" max="999" min="0" class="form-control" id="codigo" name="codigo">
+            </div>
+        </div>
+
+
+        <div class="col-auto pt-3">
+            <label class="sr-only" for="dinero">Cantidad: </label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">€</div>
+                </div>
+                <input type="number" min="0" step="0.5" class="form-control" id="dinero"  name="dinero">
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary mb-3 ml-3"> Ingresar dinero  <span class="glyphicon glyphicon-eur"></span></button>
+
+    }
+</div>

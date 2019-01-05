@@ -39,7 +39,7 @@ public IAdministradorCAD get_IAdministradorCAD ()
         return this._IAdministradorCAD;
 }
 
-public string New_ (string p_email, string p_nombre, string p_apellidos, string p_nick, Nullable<DateTime> p_nacimiento, string p_provincia, string p_localidad, float p_cartera, PetMeGenNHibernate.Enumerated.PetMe.EstadoUsuarioEnum p_estado, String p_pass, string p_motivoEstado)
+public string New_ (string p_email, string p_nombre, string p_apellidos, string p_nick, Nullable<DateTime> p_nacimiento, string p_provincia, string p_localidad, float p_cartera, string p_telefono, PetMeGenNHibernate.Enumerated.PetMe.EstadoUsuarioEnum p_estado, String p_pass, string p_motivoEstado)
 {
         AdministradorEN administradorEN = null;
         string oid;
@@ -62,6 +62,8 @@ public string New_ (string p_email, string p_nombre, string p_apellidos, string 
 
         administradorEN.Cartera = p_cartera;
 
+        administradorEN.Telefono = p_telefono;
+
         administradorEN.Estado = p_estado;
 
         administradorEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
@@ -74,7 +76,7 @@ public string New_ (string p_email, string p_nombre, string p_apellidos, string 
         return oid;
 }
 
-public void Modify (string p_Administrador_OID, string p_nombre, string p_apellidos, string p_nick, Nullable<DateTime> p_nacimiento, string p_provincia, string p_localidad, float p_cartera, PetMeGenNHibernate.Enumerated.PetMe.EstadoUsuarioEnum p_estado, String p_pass, string p_motivoEstado)
+public void Modify (string p_Administrador_OID, string p_nombre, string p_apellidos, string p_nick, Nullable<DateTime> p_nacimiento, string p_provincia, string p_localidad, float p_cartera, string p_telefono, PetMeGenNHibernate.Enumerated.PetMe.EstadoUsuarioEnum p_estado, String p_pass, string p_motivoEstado)
 {
         AdministradorEN administradorEN = null;
 
@@ -88,6 +90,7 @@ public void Modify (string p_Administrador_OID, string p_nombre, string p_apelli
         administradorEN.Provincia = p_provincia;
         administradorEN.Localidad = p_localidad;
         administradorEN.Cartera = p_cartera;
+        administradorEN.Telefono = p_telefono;
         administradorEN.Estado = p_estado;
         administradorEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
         administradorEN.MotivoEstado = p_motivoEstado;

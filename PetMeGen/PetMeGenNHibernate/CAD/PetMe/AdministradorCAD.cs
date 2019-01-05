@@ -163,6 +163,9 @@ public void Modify (AdministradorEN administrador)
                 administradorEN.Cartera = administrador.Cartera;
 
 
+                administradorEN.Telefono = administrador.Telefono;
+
+
                 administradorEN.Estado = administrador.Estado;
 
 

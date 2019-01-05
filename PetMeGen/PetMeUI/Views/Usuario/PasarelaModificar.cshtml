@@ -1,0 +1,29 @@
+﻿@using PetMeGenNHibernate.Enumerated.PetMe;
+@{
+    ViewBag.Title = "PasarelaModificar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>PasarelaModificar</h2>
+
+@using (Html.BeginForm("ModificarEstado", "Usuario", FormMethod.Post))
+{
+<div class="form-group">
+    <label for="motivo">Motivo: </label>
+    <input type="text" class="form-control" id="motivo" name="motivo">
+</div>
+
+<div class="form-group">
+    <label for="accion" class="control-label col-md-2">Motivo </label>
+    <select class="selectpicker form-control" data-live-search="true" name="accion">
+        <option selected>Elige un motivo</option>
+        <option value="activo">@EstadoUsuarioEnum.activo</option>
+        <option value="baneado">@EstadoUsuarioEnum.baneado</option>
+        <option value="suspendido">@EstadoUsuarioEnum.suspendido</option>
+
+    </select>
+</div>
+
+<button type="submit" class="btn btn-primary"> Modificar </button>
+
+}

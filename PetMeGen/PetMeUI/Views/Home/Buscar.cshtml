@@ -1,0 +1,112 @@
+﻿@model IEnumerable<PetMeUI.Models.AnuncioViewModel>
+
+@{
+    ViewBag.Title = "Buscar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<hr />
+@using (Html.BeginForm("Buscar", "Home", FormMethod.Post))
+{
+
+    <div class="form-inline">
+        <div class="form-group">
+            <label for="TipoFiltro" class="control-label pr-2">Filtrar por: </label>
+            <select class="selectpicker form-control" data-live-search="true" name="TipoFiltro">
+                <option selected value="sinfiltro">Sin filtro</option>
+                <option value="id">ID</option>
+                <option value="provincia">Provincia</option>
+                <option value="localidad">Localidad</option>
+                <option value="direccion">Dirección</option>
+
+            </select>
+        </div>
+
+        <div class="form-group pl-2">
+            <label for="texto" class="control-label pr-2">Datos: </label>
+            <input type="text" class="form-control" id="text" name="Datos">
+        </div>
+    </div>
+
+
+
+    <div class="form-row pt-2">
+        <div class="form-group col-md-4" data-provide="datepicker">
+            <label for="fini" class="control-label">Fecha Inicio: </label>
+            <input type="date" name="fini" required />
+
+        </div>
+
+        <div class="form-group col-md-4" data-provide="datepicker">
+            <label for="ffin" class="control-label">Fecha Fin: </label>
+            <input type="date" name="ffin" required />
+        </div>
+
+    </div>
+
+    <div class="row pl-3">
+        <button type="submit" class="btn btn-primary "> <span class="glyphicon glyphicon-search"></span> Buscar</button>
+
+    </div>
+
+
+
+}
+
+
+
+<h2>Resultado de la busqueda: </h2>
+
+
+
+@foreach (var item in Model)
+{
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h2 class="text-left">Anuncio #@Html.ActionLink(item.Id.ToString(), "Details", "Anuncio", new { id = item.Id }, null) de @Html.ActionLink(item.CuidadorNick, "Details", "Usuario", new { id = item.CuidadorNick }, null)</h2>
+
+            <div class="row">
+                <div class="col-md-4 text-left"><b>Desde: </b> @Html.DisplayFor(model => item.FechaIni) <span>&#x1f4c5;</span></div>
+                <div class="col-md-4 text-center"><b>Direccion: </b> @Html.DisplayFor(model => item.Direccion) </div>
+                <div class="col-md-4 text-right"><b>Detalle: </b> @Html.DisplayFor(model => item.Detalle)</div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-left"><b>Hasta: </b> @Html.DisplayFor(model => item.FechaFin) <span>&#x1f4c5;</span></div>
+                <div class="col-md-4 text-center"><b>@Html.DisplayFor(model => item.Provincia), @Html.DisplayFor(model => item.Localidad) </b> </div>
+
+
+            </div>
+
+            <div class="row pt-2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Animal</th>
+                            <th scope="col">Tarifa</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 1; i <= item.TA_id.Count(); i++)
+                        {
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td>@item.TA_tipo[i - 1]</td>
+                                <td>@item.TA_tarifa[i - 1] €</td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                @Html.ActionLink("Contratar", "Details", "Anuncio", new { id = item.Id }, new { @class = "btn btn-primary" })
+            </div>
+        </div> <!--Fin del jumbotron-->
+    </div>
+}

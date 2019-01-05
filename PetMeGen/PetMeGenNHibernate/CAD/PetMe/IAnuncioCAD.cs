@@ -46,12 +46,25 @@ void QuitarAnimales (int p_Anuncio_OID, System.Collections.Generic.IList<int> p_
 
 
 
-System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorFechaIni (Nullable<DateTime> p_fechaIni);
-
-
 System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorFechaFin (Nullable<DateTime> p_fechaFin);
 
 
 System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorEstado (PetMeGenNHibernate.Enumerated.PetMe.EstadosEnum ? p_estado);
+
+
+
+System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorNoContratado ();
+
+
+System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorProvincia (string p_provincia);
+
+
+System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorLocalidad (string p_localidad);
+
+
+System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorDireccion (string p_direccion);
+
+
+System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorFechaIni (Nullable<DateTime> p_fechaIni);
 }
 }

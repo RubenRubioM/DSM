@@ -1,0 +1,111 @@
+﻿@using PetMeGenNHibernate.Enumerated.PetMe;
+@model PetMeUI.Models.UsuarioViewModel
+
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="d-block justify-content-center">
+
+    <h2 class="text-center">Detalles de @Html.DisplayFor(model => model.Nick)</h2>
+
+</div>
+
+
+
+
+<div class="text-center" style="background-color:aliceblue;">
+    @Html.ActionLink("Modificar datos de perfil", "Edit", new { id = Model.Nick }, new { @class = "btn btn-info mt-3 text-left" })
+
+    <hr />
+    <h4 class="pb-4"><i class="fa fa-envelope"></i> Email: @Html.DisplayFor(model => model.Email)</h4>
+    <h4 class="pb-4"><i class="fa fa-user"></i> Nick: @Html.DisplayFor(model => model.Nick) (@Html.DisplayFor(model => model.Nombre) @Html.DisplayFor(model => model.Apellidos))</h4>
+    <h4 class="pb-4"><i class="fa fa-calendar"></i> Fecha de nacimiento: @Html.DisplayFor(model => model.FNacimiento)</h4>
+    <h4 class="pb-4"><i class="fa fa-road"></i> @Html.DisplayFor(model => model.Localidad), @Html.DisplayFor(model => model.Provincia)</h4>
+    <h4 class="pb-4"><i class="fa fa-phone-square"></i> Telefono: @Html.DisplayFor(model => model.Telefono)</h4>
+    <h4 class="pb-4"><i class="fa fa-money"></i> Cartera: @Html.DisplayFor(model => model.cartera) €</h4>
+    @if (Model.estado == 0)
+    {
+        <h4 class="pb-4">Estado: Activo</h4>
+
+    }
+    else
+    {
+        <h4 class="pb-4">Estado: @Html.DisplayFor(model => model.estado)</h4>
+
+    }
+
+    <hr />
+    <h3 class="text-center">Mis anuncios</h3>
+    <div class="list-group">
+
+        @foreach (var anuncio in Model.AnunciosCreados_id)
+        {
+            @Html.ActionLink(anuncio.ToString(), "Details", "Anuncio", new { id = anuncio }, new { @class = "list-group-item list-group-item-action" })
+        }
+
+
+    </div>
+
+
+    <h3 class="text-center">Mis reservas</h3>
+    <div class="list-group">
+
+        @foreach (var anuncio in Model.AnunciosContratados_id)
+        {
+            @Html.ActionLink(anuncio.ToString(), "Details", "Anuncio", new { id = anuncio }, new { @class = "list-group-item list-group-item-action" })
+        }
+
+
+    </div>
+
+
+
+    <h3 class="text-center">Comentarios realizados</h3>
+    <div class="text-center">
+        <table class="table table-striped">
+
+            @for (int i = 0; i < Model.ComentariosDetalles.Count(); i++)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => model.ComentariosDetalles[i])</td>
+                    @if (Model.ComentariosValoraciones[i] == ValoracionEnum.muy_mala)
+                    {
+                        <td><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></td>
+                    }
+                    else if (Model.ComentariosValoraciones[i] == ValoracionEnum.mala)
+                    {
+                        <td><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></td>
+                    }
+                    else if (Model.ComentariosValoraciones[i] == ValoracionEnum.normal)
+                    {
+                        <td><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></td>
+                    }
+                    else if (Model.ComentariosValoraciones[i] == ValoracionEnum.buena)
+                    {
+                        <td><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></td>
+                    }
+                    else if (Model.ComentariosValoraciones[i] == ValoracionEnum.muy_buena)
+                    {
+                        <td><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></td>
+                    }
+                </tr>
+            }
+
+
+        </table>
+
+        <a href="~/Usuario/PasarelaPago" class="btn btn-primary mt-3 mb-3">Ingresar dinero €</a>
+
+    </div>
+    @using (Html.BeginForm("PasarelaModificar", "Usuario", FormMethod.Post))
+    {
+        @Html.HiddenFor(model => model.Nick);
+
+        <button type="submit" class="btn btn-warning mt-3 mb-3"> Administrar estado del usuario </button>
+
+    }
+
+
+
+</div>

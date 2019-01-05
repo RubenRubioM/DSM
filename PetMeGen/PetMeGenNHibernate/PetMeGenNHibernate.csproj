@@ -120,7 +120,6 @@
 			
 			
 			
-			
 			<Compile Include="CP\PetMe\UsuarioCP_ReservarAnuncio.cs" />
 			
 			<Compile Include="CP\PetMe\UsuarioCP_HacerComentario.cs" />
@@ -144,6 +143,8 @@
 			
 			
 			<Compile Include="CP\PetMe\UsuarioCP_EliminarAnuncio.cs" />
+			
+			
 			
 			
 			
@@ -172,8 +173,12 @@
 			
 			
 			
-			
 			<Compile Include="CEN\PetMe\AnuncioCEN_CancelarContrato.cs" />
+			
+			
+			
+			
+			
 			
 	<Compile Include="EN\PetMe\Tipo_AnimalEN.cs" />
 	<Compile Include="CEN\PetMe\Tipo_AnimalCEN.cs" />
@@ -205,6 +210,8 @@
 			
 			
 			
+			
+			<Compile Include="CP\PetMe\AdministradorCP_ModificarEstado.cs" />
 			
 	<Compile Include="Enumerated\PetMe\ValoracionEnum.cs" />
 	<Compile Include="Enumerated\PetMe\EstadosEnum.cs" />

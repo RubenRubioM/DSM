@@ -1,0 +1,53 @@
+﻿@model PetMeUI.Models.ComentarioViewModel
+@using PetMeGenNHibernate.Enumerated.PetMe;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Añadir comentario al anuncio </h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal" style="background-color:aliceblue;">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comentario, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Comentario, new { htmlAttributes = new { @class = "form-control" , @rows=5} })
+            @Html.ValidationMessageFor(model => model.Comentario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="Motivo" class="control-label col-md-2">Valoración: </label>
+        <select class="selectpicker form-control" data-live-search="true" name="Valoracion">
+            <option selected>Elige un motivo</option>
+            <option value="muy_mala">&#x2605;</option>
+            <option value="mala">&#x2605;&#x2605;</option>
+            <option value="normal">&#x2605;&#x2605;&#x2605;</option>
+            <option value="buena">&#x2605;&#x2605;&#x2605;&#x2605;</option>
+            <option value="muy_buena">&#x2605;&#x2605;&#x2605;&#x2605;&#x2605;</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Dejar comentario" class="btn btn-primary mb-3" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Volver", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

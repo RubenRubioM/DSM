@@ -1,106 +1,52 @@
 ﻿@model IEnumerable<PetMeGenNHibernate.EN.PetMe.UsuarioEN>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Usuarios";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Apellidos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nick)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nacimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Provincia)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Localidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Foto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cartera)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pass)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MotivoEstado)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Apellidos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nick)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nacimiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Provincia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Localidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Foto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cartera)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pass)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MotivoEstado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<div class="text-center">
+    <h2>Menu administracion (usuarios)</h2>
+
+    @Html.ActionLink("Crear nuevo usuario", "Create","",new {@class="btn btn-primary" })
+</div>
+    
+
+
+<div class="container h-100 d-flex flex-wrap">
+
+
+@foreach (var item in Model)
+{
+    <div class="col-md-6">
+        <div class="jumbotron">
+            
+                <h2 class="text-center">@Html.DisplayFor(model => item.Nick)</h2>
+                <h3>
+                    
+                </h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Nick },new { @class="btn btn-warning" })
+                    </div>
+                    <div class="col-md-4">
+                       
+                        @Html.ActionLink("Detalles", "Details", new { id = item.Nick }, new { @class = "btn btn-primary" })
+                    </div>
+                    <div class="col-md-4">
+                      
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Nick }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+                
+
+            
+        </div>
+    </div>
+    
 }
 
-</table>
+</div>

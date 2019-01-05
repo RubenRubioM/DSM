@@ -1,4 +1,4 @@
-dataSourceHost=(local)\\\\sqlexpress
+dataSourceHost=(local)
 dataSourcePassword=nhibernatePass
 dataSourcePort=3306
 dataSourceUser=nhibernateUser

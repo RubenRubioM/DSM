@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "SinSesion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="text-center">
+    <h1>Debes iniciar sesion para realizar esa acción</h1>
+    @Html.ActionLink("Iniciar sesion", "Index", "Account","", new { @class = "btn btn-primary" })
+</div>

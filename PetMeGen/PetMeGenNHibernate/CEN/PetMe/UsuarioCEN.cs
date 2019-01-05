@@ -39,7 +39,7 @@ public IUsuarioCAD get_IUsuarioCAD ()
         return this._IUsuarioCAD;
 }
 
-public string Registrarse (string p_email, string p_pass, string p_nombre, string p_apellidos, string p_nick, Nullable<DateTime> p_nacimiento, string p_provincia, string p_localidad, string p_motivoEstado)
+public string Registrarse (string p_email, String p_pass, string p_nombre, string p_apellidos, string p_nick, Nullable<DateTime> p_nacimiento, string p_provincia, string p_localidad, string p_motivoEstado, string p_telefono)
 {
         UsuarioEN usuarioEN = null;
         string oid;
@@ -48,7 +48,7 @@ public string Registrarse (string p_email, string p_pass, string p_nombre, strin
         usuarioEN = new UsuarioEN ();
         usuarioEN.Email = p_email;
 
-        usuarioEN.Pass = p_pass;
+        usuarioEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
 
         usuarioEN.Nombre = p_nombre;
 
@@ -64,13 +64,15 @@ public string Registrarse (string p_email, string p_pass, string p_nombre, strin
 
         usuarioEN.MotivoEstado = p_motivoEstado;
 
+        usuarioEN.Telefono = p_telefono;
+
         //Call to UsuarioCAD
 
         oid = _IUsuarioCAD.Registrarse (usuarioEN);
         return oid;
 }
 
-public void Modify (string p_Usuario_OID, string p_nombre, string p_apellidos, string p_nick, Nullable<DateTime> p_nacimiento, string p_provincia, string p_localidad, float p_cartera, PetMeGenNHibernate.Enumerated.PetMe.EstadoUsuarioEnum p_estado, String p_pass, string p_motivoEstado)
+public void Modify (string p_Usuario_OID, string p_nombre, string p_apellidos, string p_nick, Nullable<DateTime> p_nacimiento, string p_provincia, string p_localidad, float p_cartera, string p_telefono, PetMeGenNHibernate.Enumerated.PetMe.EstadoUsuarioEnum p_estado, String p_pass, string p_motivoEstado)
 {
         UsuarioEN usuarioEN = null;
 
@@ -84,6 +86,7 @@ public void Modify (string p_Usuario_OID, string p_nombre, string p_apellidos, s
         usuarioEN.Provincia = p_provincia;
         usuarioEN.Localidad = p_localidad;
         usuarioEN.Cartera = p_cartera;
+        usuarioEN.Telefono = p_telefono;
         usuarioEN.Estado = p_estado;
         usuarioEN.Pass = Utils.Util.GetEncondeMD5 (p_pass);
         usuarioEN.MotivoEstado = p_motivoEstado;
@@ -96,17 +99,6 @@ public void Destroy (string email
                      )
 {
         _IUsuarioCAD.Destroy (email);
-}
-
-public string Login (string p_Usuario_OID, string p_pass)
-{
-        string result = null;
-        UsuarioEN en = _IUsuarioCAD.ReadOIDDefault (p_Usuario_OID);
-
-        if (en != null && en.Pass.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
-                result = this.GetToken (en.Email);
-
-        return result;
 }
 
 public void AsignarAnuncioContratado (string p_Usuario_OID, System.Collections.Generic.IList<int> p_anuncios_contratados_OIDs)
@@ -169,10 +161,25 @@ public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> B
 {
         return _IUsuarioCAD.BuscarPorProvincia (p_provincia);
 }
-public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorLocalidad (string arg0)
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorLocalidad (string p_localidad)
 {
-        return _IUsuarioCAD.BuscarPorLocalidad (arg0);
+        return _IUsuarioCAD.BuscarPorLocalidad (p_localidad);
 }
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorNick (string p_nick)
+{
+        return _IUsuarioCAD.BuscarPorNick (p_nick);
+}
+public string Login (string p_Usuario_OID, string p_pass)
+{
+        string result = null;
+        UsuarioEN en = _IUsuarioCAD.ReadOIDDefault (p_Usuario_OID);
+
+        if (en != null && en.Pass.Equals (Utils.Util.GetEncondeMD5 (p_pass)))
+                result = this.GetToken (en.Email);
+
+        return result;
+}
+
 
 
 

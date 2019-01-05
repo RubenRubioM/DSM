@@ -97,8 +97,12 @@
 		 </class>	
 		  
 		  <query name="AnuncioENReadAllHQL">from AnuncioEN</query>
-		  <query name="AnuncioENbuscarPorFechaIniHQL"><![CDATA[FROM AnuncioEN anu WHERE anu.FechaIni = :p_fechaIni]]></query>
-		  <query name="AnuncioENbuscarPorFechaFinHQL"><![CDATA[FROM AnuncioEN anu WHERE anu.FechaFin = :p_fechaFin]]></query>
+		  <query name="AnuncioENbuscarPorFechaFinHQL"><![CDATA[FROM AnuncioEN anu WHERE anu.FechaFin <= :p_fechaFin]]></query>
 		  <query name="AnuncioENbuscarPorEstadoHQL"><![CDATA[FROM AnuncioEN anu WHERE anu.Estado = :p_estado]]></query>
+		  <query name="AnuncioENbuscarPorNoContratadoHQL"><![CDATA[FROM AnuncioEN anu WHERE anu.AnimalContratado=0]]></query>
+		  <query name="AnuncioENbuscarPorProvinciaHQL"><![CDATA[FROM AnuncioEN anu WHERE anu.Provincia = :p_provincia]]></query>
+		  <query name="AnuncioENbuscarPorLocalidadHQL"><![CDATA[FROM AnuncioEN anu WHERE anu.Localidad = :p_localidad]]></query>
+		  <query name="AnuncioENbuscarPorDireccionHQL"><![CDATA[FROM AnuncioEN anu WHERE anu.Direccion = :p_direccion]]></query>
+		  <query name="AnuncioENbuscarPorFechaIniHQL"><![CDATA[FROM AnuncioEN anu WHERE anu.FechaIni > :p_fechaIni]]></query>
 		</hibernate-mapping>
 	

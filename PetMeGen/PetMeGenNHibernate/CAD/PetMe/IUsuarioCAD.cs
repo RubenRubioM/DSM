@@ -26,7 +26,6 @@ void Destroy (string email
 
 
 
-
 void AsignarAnuncioContratado (string p_Usuario_OID, System.Collections.Generic.IList<int> p_anuncios_contratados_OIDs);
 
 void QuitarAnuncioContratado (string p_Usuario_OID, System.Collections.Generic.IList<int> p_anuncios_contratados_OIDs);
@@ -58,6 +57,9 @@ System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPo
 System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorProvincia (string p_provincia);
 
 
-System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorLocalidad (string arg0);
+System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorLocalidad (string p_localidad);
+
+
+System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorNick (string p_nick);
 }
 }

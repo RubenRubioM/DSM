@@ -205,6 +205,9 @@ public void Modify (UsuarioEN usuario)
                 usuarioEN.Cartera = usuario.Cartera;
 
 
+                usuarioEN.Telefono = usuario.Telefono;
+
+
                 usuarioEN.Estado = usuario.Estado;
 
 
@@ -606,7 +609,7 @@ public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> B
 
         return result;
 }
-public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorLocalidad (string arg0)
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorLocalidad (string p_localidad)
 {
         System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> result;
         try
@@ -615,7 +618,37 @@ public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> B
                 //String sql = @"FROM UsuarioEN self where FROM UsuarioEN usu WHERE usu.Localidad = :p_localidad";
                 //IQuery query = session.CreateQuery(sql);
                 IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENbuscarPorLocalidadHQL");
-                query.SetParameter ("arg0", arg0);
+                query.SetParameter ("p_localidad", p_localidad);
+
+                result = query.List<PetMeGenNHibernate.EN.PetMe.UsuarioEN>();
+                SessionCommit ();
+        }
+
+        catch (Exception ex) {
+                SessionRollBack ();
+                if (ex is PetMeGenNHibernate.Exceptions.ModelException)
+                        throw ex;
+                throw new PetMeGenNHibernate.Exceptions.DataLayerException ("Error in UsuarioCAD.", ex);
+        }
+
+
+        finally
+        {
+                SessionClose ();
+        }
+
+        return result;
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> BuscarPorNick (string p_nick)
+{
+        System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.UsuarioEN> result;
+        try
+        {
+                SessionInitializeTransaction ();
+                //String sql = @"FROM UsuarioEN self where FROM UsuarioEN usu WHERE usu.Nick = :p_nick";
+                //IQuery query = session.CreateQuery(sql);
+                IQuery query = (IQuery)session.GetNamedQuery ("UsuarioENbuscarPorNickHQL");
+                query.SetParameter ("p_nick", p_nick);
 
                 result = query.List<PetMeGenNHibernate.EN.PetMe.UsuarioEN>();
                 SessionCommit ();

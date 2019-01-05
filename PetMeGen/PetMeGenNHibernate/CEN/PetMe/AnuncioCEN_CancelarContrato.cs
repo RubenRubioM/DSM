@@ -21,15 +21,15 @@ public partial class AnuncioCEN
 {
 public void CancelarContrato (int p_oid)
 {
-            /*PROTECTED REGION ID(PetMeGenNHibernate.CEN.PetMe_Anuncio_cancelarContrato) ENABLED START*/
+        /*PROTECTED REGION ID(PetMeGenNHibernate.CEN.PetMe_Anuncio_cancelarContrato) ENABLED START*/
 
-            // RECORDATORIO: el id del animal contratado por defecto es 0, por eso lo devolvemos a su valor inicial
+        // RECORDATORIO: el id del animal contratado por defecto es 0, por eso lo devolvemos a su valor inicial
 
-            AnuncioEN anuncioEN = _IAnuncioCAD.ReadOID(p_oid);
+        AnuncioEN anuncioEN = _IAnuncioCAD.ReadOID (p_oid);
 
-            anuncioEN.AnimalContratado = 0;
+        anuncioEN.AnimalContratado = 0;
 
-            _IAnuncioCAD.Modify(anuncioEN);
+        _IAnuncioCAD.Modify (anuncioEN);
 
         /*PROTECTED REGION END*/
 }

@@ -1,6 +1,8 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿@import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+body {
+    background-color: #77b7ff;
+    font-family: 'Quicksand', sans-serif !important;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +23,110 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+footer {
+    padding-top: .7em;
+    color: white;
+    text-align: center;
+    background-color: #083070;
+    border: solid 2px #000;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+}
+
+.titulo {
+    padding-top: 1.3em;
+    padding-bottom: 1.3em;
+    color: white;
+    text-align: center;
+    background-color: #083070;
+    border: solid 4px #000;
+    margin-left: 1.5em;
+    margin-right: 1.5em;
+    margin-top: 1em;
+}
+
+h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
+    font-size: 70px;
+}
+
+/*---------------------- DANI ----------------------------*/
+.iconosVarios {
+    float: right;
+}
+
+.fotoNombreUsu > h2 {
+    display: inline-block;
+}
+
+.perfil > h3 {
+    margin-left: 1em;
+    margin-top: 1em;
+}
+
+.cajaDescripcionPerfil {
+    width: 1100px;
+    margin: 0 auto;
+    border: solid 1px #000;
+    background-color: white;
+}
+
+.perfil > h2 {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.anuncioPerfil {
+    text-align: center;
+}
+
+    .anuncioPerfil > a {
+        margin: 0 auto;
+        margin-top: .7em;
+        margin-bottom: 1.7em;
+    }
+
+.comentariosPerfil {
+    margin-bottom: 1.7em;
+}
+
+    .comentariosPerfil > p {
+        text-align: center;
+    }
+
+.fotoNombreUsuOpinion > h3 {
+    display: inline-block;
+}
+
+.estrellaNumero {
+    float: right;
+    margin-top: 3em;
+}
+
+    .estrellaNumero > img {
+        margin-right: .3em;
+    }
+
+    .estrellaNumero > p {
+        display: inline-block;
+        font-weight: bold;
+        margin-right: 2em;
+    }
+
+.cajaOpinion {
+    width: 900px;
+    margin: 0 auto;
+    border: solid 1px #000;
+    background-color: white;
+}
+
+.vertical-center {
+    min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+    display: flex;
+    align-items: center;
 }

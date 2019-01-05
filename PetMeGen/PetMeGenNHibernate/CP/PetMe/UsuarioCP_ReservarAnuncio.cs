@@ -29,15 +29,19 @@ public void ReservarAnuncio (string p_oid, int p_anuncio_OID, int p_animal_OID)
         UsuarioCEN usuarioCEN = null;
         IAnuncioCAD anuncioCAD = null;
         AnuncioCEN anuncioCEN = null;
+        ITipo_AnimalCAD tipo_AnimalCAD = null;
+        Tipo_AnimalCEN tipo_AnimalCEN = null;
 
 
         try
         {
                 SessionInitializeTransaction ();
                 usuarioCAD = new UsuarioCAD (session);
-                usuarioCEN = new  UsuarioCEN (usuarioCAD);
+                usuarioCEN = new UsuarioCEN (usuarioCAD);
                 anuncioCAD = new AnuncioCAD (session);
                 anuncioCEN = new AnuncioCEN (anuncioCAD);
+                tipo_AnimalCAD = new Tipo_AnimalCAD (session);
+                tipo_AnimalCEN = new Tipo_AnimalCEN (tipo_AnimalCAD);
 
                 // modificamos estado a contratado, junto al animal escogido, y lo reflejamos en la base de datos
                 AnuncioEN anuncio = anuncioCEN.ReadOID (p_anuncio_OID);
@@ -50,6 +54,13 @@ public void ReservarAnuncio (string p_oid, int p_anuncio_OID, int p_animal_OID)
 
                 // luego llamamos al relationer de anuncio para reflejar su contratante
                 anuncioCEN.AsignarContratante (p_anuncio_OID, p_oid);
+
+                // incrementamos la cartera del usuario contratante con el precio del tipo de animal
+                Tipo_AnimalEN animal = tipo_AnimalCEN.ReadOID (p_animal_OID);
+                usuarioCEN.IncrementarCartera (p_oid, (float)-animal.Tarifa);
+
+                // incrementamos la del cuidador
+                usuarioCEN.IncrementarCartera (anuncio.Cuidador.Email, (float)animal.Tarifa);
 
                 SessionCommit ();
         }

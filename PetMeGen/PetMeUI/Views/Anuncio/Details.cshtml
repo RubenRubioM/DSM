@@ -1,0 +1,88 @@
+﻿@using PetMeGenNHibernate.Enumerated.PetMe;
+@model PetMeUI.Models.AnuncioViewModel
+
+@{
+    ViewBag.Title = "Detalles de anuncio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Detalles del anuncio Nº @Html.DisplayFor(model => model.Id)</h2>
+
+<div class="text-center" style="background-color:aliceblue;">
+    <hr />
+    <h4 class="pb-3"><i class="fa fa-user"></i> <b>Cuidador:</b> @Html.DisplayFor(model => model.Cuidador.Nombre) @Html.DisplayFor(model => model.Cuidador.Apellidos) (@Html.ActionLink(Model.Cuidador.Nick,"Details","Usuario",new { id=Model.Cuidador.Nick },null))</h4>
+    <h5 class="pb-2"><i class="fa fa-calendar"></i> <b>Desde:</b> @Html.DisplayFor(model => model.FechaIni) <i class="fa fa-calendar"></i> <b>Hasta:</b> @Html.DisplayFor(model => model.FechaFin)</h5>
+    <h5 class="pb-2"><i class="fa fa-road"></i> @Html.DisplayFor(model => model.Localidad), @Html.DisplayFor(model => model.Provincia)</h5>
+    <h5 class="pb-2"><i class="fa fa-street-view"></i> <b>Dirección:</b>  @Html.DisplayFor(model => model.Direccion)</h5>
+    <h5 class="pb-2"><i class="fa fa-info-circle"></i> <b>Detalles:</b> @Html.DisplayFor(model => model.Detalle)</h5>
+
+    <hr />
+
+    <h3>Comentarios</h3>
+    <div class="text-center">
+        <table class="table table-striped">
+
+            @for (int i = 0; i < Model.ComentariosDetalles.Count(); i++)
+            {
+            <tr>
+                <td>@Html.DisplayFor(model => model.ComentariosDetalles[i])</td>
+                @if (Model.ComentariosValoraciones[i] == ValoracionEnum.muy_mala)
+                {
+                    <td><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></td>
+                }
+                else if (Model.ComentariosValoraciones[i] == ValoracionEnum.mala)
+                {
+                    <td><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></td>
+                }
+                else if (Model.ComentariosValoraciones[i] == ValoracionEnum.normal)
+                {
+                    <td><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></td>
+                }
+                else if (Model.ComentariosValoraciones[i] == ValoracionEnum.buena)
+                {
+                    <td><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></td>
+                }
+                else if (Model.ComentariosValoraciones[i] == ValoracionEnum.muy_buena)
+                {
+                    <td><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></td>
+                }
+            </tr>
+            }
+
+            
+        </table>
+        @Html.ActionLink("Dejar Comentario","Create","Comentario",new { id = Model.Id },new { @class="btn btn-info mb-3" })
+    </div>
+    <hr />
+
+    <div class="d-flex justify-content-center">
+        <!--Solo se muestra el botón de contratar si el animal aun no está contratado-->
+        @if (Model.AnimalContratado == 0)
+        {
+            using (Html.BeginForm("Contratar", "Anuncio", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.Id);
+                <div class="form-group row">
+                    <label for="TipoAnimal" class="control-label col-md-2"></label>
+                    <select class="selectpicker form-control custom-select" data-live-search="true" id="TipoAnimal" name="TipoAnimal">
+                        @for (int i = 0; i < Model.TA_tarifa.Count(); i++)
+                        {
+                            <option value="@Html.DisplayFor(model => model.TA_id[i])">@Html.DisplayFor(model => model.TA_tipo[i]) - @Html.DisplayFor(model => model.TA_tarifa[i])€</option>
+                        }
+
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary pl-3 mb-5">Contratar</button>
+
+            }
+        }
+    </div>
+   
+    
+
+</div>
+@*<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@

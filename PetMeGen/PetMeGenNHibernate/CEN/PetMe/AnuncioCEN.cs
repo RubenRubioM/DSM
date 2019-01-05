@@ -149,10 +149,6 @@ public void QuitarAnimales (int p_Anuncio_OID, System.Collections.Generic.IList<
 
         _IAnuncioCAD.QuitarAnimales (p_Anuncio_OID, p_tipos_Animales_OIDs);
 }
-public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorFechaIni (Nullable<DateTime> p_fechaIni)
-{
-        return _IAnuncioCAD.BuscarPorFechaIni (p_fechaIni);
-}
 public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorFechaFin (Nullable<DateTime> p_fechaFin)
 {
         return _IAnuncioCAD.BuscarPorFechaFin (p_fechaFin);
@@ -160,6 +156,26 @@ public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> B
 public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorEstado (PetMeGenNHibernate.Enumerated.PetMe.EstadosEnum ? p_estado)
 {
         return _IAnuncioCAD.BuscarPorEstado (p_estado);
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorNoContratado ()
+{
+        return _IAnuncioCAD.BuscarPorNoContratado ();
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorProvincia (string p_provincia)
+{
+        return _IAnuncioCAD.BuscarPorProvincia (p_provincia);
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorLocalidad (string p_localidad)
+{
+        return _IAnuncioCAD.BuscarPorLocalidad (p_localidad);
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorDireccion (string p_direccion)
+{
+        return _IAnuncioCAD.BuscarPorDireccion (p_direccion);
+}
+public System.Collections.Generic.IList<PetMeGenNHibernate.EN.PetMe.AnuncioEN> BuscarPorFechaIni (Nullable<DateTime> p_fechaIni)
+{
+        return _IAnuncioCAD.BuscarPorFechaIni (p_fechaIni);
 }
 }
 }

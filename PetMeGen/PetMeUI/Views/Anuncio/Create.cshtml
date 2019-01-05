@@ -1,0 +1,93 @@
+﻿@model PetMeUI.Models.AnuncioViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Crear nuevo anuncio</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="d-block my-auto" style="background-color:aliceblue;">
+    <hr />
+
+ 
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaIni, htmlAttributes: new { @class = "control-label col-md-2 fa fa-calendar" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FechaIni, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FechaIni, "", new { @class = "text-danger" })
+        </div>
+
+       
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "control-label col-md-2 fa fa-calendar" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FechaFin, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Direccion, htmlAttributes: new { @class = "control-label col-md-2 fa fa-street-view" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Detalle, htmlAttributes: new { @class = "control-label col-md-2 fa fa-info-circle" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Detalle, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Detalle, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Localidad, htmlAttributes: new { @class = "control-label col-md-2 fa fa-road" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Localidad, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Localidad, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Provincia, htmlAttributes: new { @class = "control-label col-md-2 fa fa-road" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Provincia, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Provincia, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group pl-3 my-auto">
+        <label for="Animales" class="control-label col-md-2 "> <i class="fa fa-github-alt"></i> Animales </label>
+        <input type="text" name="Animales" class="form-control " title="Separalos por comas" />
+    </div>
+
+    <div class="form-group pl-3">
+        <label for="Precios" class="control-label col-md-2 "><i class="fa fa-money"></i> Precios </label>
+        <input type="text" name="Precios" class="form-control " title="Separalos por comas" />
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Publicar anuncio" class="btn btn-primary mt-3" />
+        </div>
+    </div>
+</div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
