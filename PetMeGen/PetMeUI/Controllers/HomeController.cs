@@ -106,33 +106,41 @@ namespace PetMeUI.Controllers
                 }
             }
 
-            if (tipoBusqueda.Equals("id"))
+            if (datos.Equals(""))
             {
-                //Busqueda por ID
-                resFiltro.Add(anuncioCEN.ReadOID(Int32.Parse(datos)));
-                
-            }
-            else if (tipoBusqueda.Equals("provincia"))
-            {
-                //Busqueda por PROVINCIA
-                resFiltro = anuncioCEN.BuscarPorProvincia(datos);
-            }else if (tipoBusqueda.Equals("localidad"))
-            {
-                //Busqueda por LOCALIDAD
-                resFiltro = anuncioCEN.BuscarPorLocalidad(datos);
-
-            }
-            else if (tipoBusqueda.Equals("direccion"))
-            {
-                //Busqueda por DIRECCION
-                resFiltro = anuncioCEN.BuscarPorDireccion(datos);
-
-            }
-            else
-            {
-                //Sin filtro, todos los datos
                 resFiltro = anuncioCEN.BuscarPorNoContratado();
+            }else
+            {
+                if (tipoBusqueda.Equals("id"))
+                {
+                    //Busqueda por ID
+                    resFiltro.Add(anuncioCEN.ReadOID(Int32.Parse(datos)));
+
+                }
+                else if (tipoBusqueda.Equals("provincia"))
+                {
+                    //Busqueda por PROVINCIA
+                    resFiltro = anuncioCEN.BuscarPorProvincia(datos);
+                }
+                else if (tipoBusqueda.Equals("localidad"))
+                {
+                    //Busqueda por LOCALIDAD
+                    resFiltro = anuncioCEN.BuscarPorLocalidad(datos);
+
+                }
+                else if (tipoBusqueda.Equals("direccion"))
+                {
+                    //Busqueda por DIRECCION
+                    resFiltro = anuncioCEN.BuscarPorDireccion(datos);
+
+                }
+                else
+                {
+                    //Sin filtro, todos los datos
+                    resFiltro = anuncioCEN.BuscarPorNoContratado();
+                }
             }
+            
             
 
             //Comparamos los que estan entre esas fechas y los del filtro
@@ -140,11 +148,15 @@ namespace PetMeUI.Controllers
             {
                 foreach(var anu2 in resultadosAmbasFechas)
                 {
-                    if(anu1.Id == anu2.Id)
+                    if (anu1 != null && anu2 != null)
                     {
-                        //Son el mismo
-                        resultadosFinales.Add(anu1);
+                        if (anu1.Id == anu2.Id)
+                        {
+                            //Son el mismo
+                            resultadosFinales.Add(anu1);
+                        }
                     }
+                    
                 }
             }
 

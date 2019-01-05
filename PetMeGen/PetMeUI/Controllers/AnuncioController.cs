@@ -105,7 +105,7 @@ namespace PetMeUI.Controllers
                
                 usuCP.CrearAnuncio(usuarioConectado[0].Email,fechaIni,fechaFin, collection.Get("Direccion"), collection.Get("Detalle"), collection.Get("Provincia"), collection.Get("Localidad"),animales,precios);
 
-                return RedirectToAction("Index/");
+                return RedirectToAction("Index","Home");
             }
             catch
             {
@@ -183,7 +183,7 @@ namespace PetMeUI.Controllers
 
                 anuncioCEN.Modify(id, fechaIni, fechaFin, direccion, detalle, estado, provincia, localidad);
 
-                return RedirectToAction("Index/");
+                return RedirectToAction("Index","Home");
             }
             catch
             {

@@ -15,9 +15,9 @@
 <div class="d-block my-auto" style="background-color:aliceblue;">
     <hr />
 
- 
+
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    
+
     <div class="form-group">
         @Html.LabelFor(model => model.FechaIni, htmlAttributes: new { @class = "control-label col-md-2 fa fa-calendar" })
         <div class="col-md-10">
@@ -25,7 +25,7 @@
             @Html.ValidationMessageFor(model => model.FechaIni, "", new { @class = "text-danger" })
         </div>
 
-       
+
     </div>
 
     <div class="form-group">
@@ -80,7 +80,30 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Publicar anuncio" class="btn btn-primary mt-3" />
+            <button type="button" value="Publicar anuncio" class="btn btn-primary mt-3 mb-3"  data-toggle="modal" data-target="#modalPublicar">Publicar</button>
+        </div>
+    </div>
+
+
+    <!-- Modal CERRAR CONTRATAR ANUNCIO -->
+    <div class="modal fade" id="modalPublicar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Publicar anuncio</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><b>¿Desea publicar el anuncio?</b></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <button type="submit" class="btn btn-primary">Publicar</button>
+
+                </div>
+            </div>
         </div>
     </div>
 </div>

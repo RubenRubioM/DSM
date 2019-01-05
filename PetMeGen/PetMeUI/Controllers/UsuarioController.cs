@@ -114,7 +114,7 @@ namespace PetMeUI.Controllers
                 this.SessionClose();
 
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Account");
             }
             catch
             {
@@ -176,7 +176,7 @@ namespace PetMeUI.Controllers
 
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
             catch
             {

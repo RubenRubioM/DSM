@@ -107,3 +107,4 @@ C:\OOH4RIA\workspace\PetMeGen\PetMeGenNHibernate\obj\Debug\PetMeGenNHibernate.cs
 C:\OOH4RIA\workspace\PetMeGen\PetMeGenNHibernate\obj\Debug\PetMeGenNHibernate.csproj.CopyComplete
 C:\OOH4RIA\workspace\PetMeGen\PetMeGenNHibernate\obj\Debug\PetMeGenNHibernate.dll
 C:\OOH4RIA\workspace\PetMeGen\PetMeGenNHibernate\obj\Debug\PetMeGenNHibernate.pdb
+C:\OOH4RIA\workspace\PetMeGen\PetMeGenNHibernate\obj\Debug\PetMeGenNHibernate.csprojAssemblyReference.cache

@@ -87,7 +87,7 @@ namespace PetMeUI.Controllers
                 //Introducimos nombre para probar pero cambiaremos por el viewData de usuario TODO
                 usuarioCP.HacerComentario(usuarioConectado[0].Email, comentario, valoracion, anuncio);
 
-                return RedirectToAction("Index","Anuncio");
+                return RedirectToAction("Details","Anuncio",new { id=anuncio });
             }
             catch
             {
@@ -127,7 +127,7 @@ namespace PetMeUI.Controllers
 
                 comentarioCEN.Modify(id2, comentarioTexto, valoracion);
 
-                return RedirectToAction("Index", "Anuncio");
+                return RedirectToAction("Index", "Home");
 
             }
             catch
